@@ -19,8 +19,8 @@ Se registra automáticamente mediante Concord en el ServiceProvider, sustituyend
 ```json
 "repositories": [
     {
-        "type": "path",
-        "url": "packages/CarlVallory/KrayinWoocommerce"
+        "type": "vcs",
+        "url": "https://github.com/carlvallory/krayin-woocommerce"
     }
 ]
 ```
