@@ -7,7 +7,9 @@ Este paquete proporciona utilidades y ajustes necesarios para la integración co
 ### 1. Sincronización de Fechas Históricas (Backdating)
 Permite la asignación masiva del atributo `created_at` en el modelo `Lead` de Krayin. Esto es esencial para que los pedidos sincronizados desde WooCommerce mantengan su fecha original de creación, en lugar de la fecha de sincronización.
 
-El paquete utiliza un ServiceProvider para "desproteger" dinámicamente el campo `created_at` sin necesidad de modificar el núcleo de Krayin.
+El paquete utiliza un modelo personalizado (`CarlVallory\KrayinWoocommerce\Models\Lead`) que extiende el modelo base de Krayin y añade `created_at` a la lista de atributos permitidos (`$fillable`).
+
+Se registra automáticamente mediante Concord en el ServiceProvider, sustituyendo al modelo original de forma transparente.
 
 ## Instalación
 

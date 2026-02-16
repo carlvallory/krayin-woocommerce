@@ -13,10 +13,9 @@ class KrayinWoocommerceServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Permitir la asignación masiva de 'created_at' en el modelo Lead para sincronización externa
-        if (class_exists(\Webkul\Lead\Models\Lead::class)) {
-            \Webkul\Lead\Models\Lead::mergeFillable(['created_at']);
-        }
+        // Registrar el modelo personalizado para permitir 'created_at' en mass assignment
+        $concord = $this->app->make('concord');
+        $concord->registerModel(\Webkul\Lead\Contracts\Lead::class, \CarlVallory\KrayinWoocommerce\Models\Lead::class);
     }
 
     /**
