@@ -1,0 +1,25 @@
+{
+    "name": "carlvallory/krayin-woocommerce",
+    "description": "Krayin Utils for WooCommerce Integration",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Carlos Vallory",
+            "email": "carlos@vallory.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "CarlVallory\\KrayinWoocommerce\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CarlVallory\\KrayinWoocommerce\\Providers\\KrayinWoocommerceServiceProvider"
+            ]
+        }
+    }
+}
