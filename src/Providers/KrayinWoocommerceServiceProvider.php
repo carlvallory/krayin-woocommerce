@@ -13,9 +13,15 @@ class KrayinWoocommerceServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Registrar el modelo personalizado para permitir 'created_at' en mass assignment
-        $concord = $this->app->make('concord');
-        $concord->registerModel(\Webkul\Lead\Contracts\Lead::class, \CarlVallory\KrayinWoocommerce\Models\Lead::class);
+        // El módulo Webkul\Lead registra el modelo base en su boot() y, por orden de
+        // providers, pisa nuestro modelo custom. Registramos en app->booted() para correr
+        // DESPUÉS de todos los providers y ganar el binding (preserva created_at = fecha pedido).
+        $this->app->booted(function () {
+            $this->app->make('concord')->registerModel(
+                \Webkul\Lead\Contracts\Lead::class,
+                \CarlVallory\KrayinWoocommerce\Models\Lead::class
+            );
+        });
     }
 
     /**
